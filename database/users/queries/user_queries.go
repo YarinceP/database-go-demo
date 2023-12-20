@@ -7,5 +7,5 @@ var UserQueries = struct {
 	// Example usage: db.QueryRowContext(ctx, UserQueries.GetUserByID, userID)
 	GetUserByID string
 }{
-	GetUserByID: "SELECT id, name FROM users WHERE id = ?",
+	GetUserByID: "SELECT * FROM users WHERE id = ?",
 }
