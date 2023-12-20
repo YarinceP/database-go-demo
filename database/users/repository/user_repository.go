@@ -1,10 +1,10 @@
 package repository
 
 import (
-	"database-go-demo/database/users/model"
-	"database-go-demo/database/users/queries"
 	"database/sql"
 	"fmt"
+	"github.com/yarincep/database-go-demo/database/users/model"
+	"github.com/yarincep/database-go-demo/database/users/queries"
 )
 
 type UserRepository interface {

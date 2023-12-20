@@ -1,9 +1,9 @@
 package service
 
 import (
-	"database-go-demo/database/users/model"
-	"database-go-demo/database/users/repository"
 	"fmt"
+	"github.com/yarincep/database-go-demo/database/users/model"
+	"github.com/yarincep/database-go-demo/database/users/repository"
 )
 
 // UserService proporciona funciones de servicio para la entidad de usuario.

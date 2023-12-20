@@ -1,13 +1,13 @@
 package database_go_demo
 
 import (
-	"database-go-demo/database"
-	"database-go-demo/database/users/repository"
 	"fmt"
+	"github.com/yarincep/database-go-demo/database"
+	"github.com/yarincep/database-go-demo/database/users/repository"
 
-	_ "database-go-demo/database"
-	_ "database-go-demo/database/users/repository"
-	"database-go-demo/database/users/service"
+	_ "github.com/yarincep/database-go-demo/database"
+	_ "github.com/yarincep/database-go-demo/database/users/repository"
+	"github.com/yarincep/database-go-demo/database/users/service"
 )
 
 // Config contiene la configuración de la biblioteca.

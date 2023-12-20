@@ -1,4 +1,4 @@
-module database-go-demo
+module github.com/yarincep/database-go-demo
 
 go 1.21
 
