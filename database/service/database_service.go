@@ -26,5 +26,5 @@ func (receiver DatabaseServiceImpl) QueryRowContext(ctx context.Context, query s
 	if err != nil {
 		log.Println(err)
 	}
-	return nil, nil
+	return repository, nil
 }
