@@ -22,7 +22,7 @@ func (receiver DatabaseServiceImpl) QueryRowContext(ctx context.Context, query s
 
 	row := receiver.db.QueryRowContext(ctx, query, params)
 
-	err := row.Scan(&repository)
+	err := row.Scan(repository)
 	if err != nil {
 		log.Println(err)
 	}
