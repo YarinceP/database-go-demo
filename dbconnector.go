@@ -3,6 +3,7 @@ package database_go_demo
 import (
 	"fmt"
 	"github.com/yarincep/database-go-demo/database"
+	service2 "github.com/yarincep/database-go-demo/database/service"
 	"github.com/yarincep/database-go-demo/database/users/repository"
 
 	_ "github.com/yarincep/database-go-demo/database"
@@ -17,11 +18,12 @@ type Config struct {
 
 // DBConnector representa la instancia principal de la biblioteca.
 type DBConnector struct {
-	UserService *service.UserService
+	UserService     *service.UserService
+	DatabaseService *service2.DatabaseServiceImpl
 	// Puedes agregar más servicios aquí según sea necesario
 }
 
-var Connector DBConnector
+var Connector *DBConnector
 
 // NewDBConnector crea una nueva instancia de la biblioteca.
 func NewDBConnector(config Config) (*DBConnector, error) {
@@ -34,10 +36,12 @@ func NewDBConnector(config Config) (*DBConnector, error) {
 	// Crea instancias de repositorios y servicios
 	userRepository := repository.NewUserRepository(db)
 	userService := service.NewUserService(userRepository)
+	databaseService := service2.NewDatabaseServiceImpl(db)
 
 	// Crea la instancia principal de la biblioteca
 	connector := &DBConnector{
-		UserService: userService,
+		UserService:     userService,
+		DatabaseService: databaseService,
 		// Puedes agregar más servicios aquí según sea necesario
 	}
 
@@ -58,5 +62,12 @@ func (connector *DBConnector) CloseDBConnector() error {
 }
 
 func RegisterDBConnector(dbConnector *DBConnector) {
-	Connector = *dbConnector
+	Connector = dbConnector
+}
+
+func ValidateDBConnector() error {
+	if Connector == nil {
+		return fmt.Errorf("Connector no registered ")
+	}
+	return nil
 }
