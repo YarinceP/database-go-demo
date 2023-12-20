@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"context"
 	"database/sql"
 	"fmt"
 	"github.com/yarincep/database-go-demo/database/users/model"
@@ -8,7 +9,7 @@ import (
 )
 
 type UserRepository interface {
-	GetUserByID(userId int) (*model.User, error)
+	GetUserByID(ctx context.Context, userId int) (*model.User, error)
 }
 
 type UserRepositoryImplement struct {
@@ -23,8 +24,8 @@ func NewUserRepository(db *sql.DB) *UserRepositoryImplement {
 }
 
 // GetUserByID obtiene un usuario por su ID desde la base de datos.
-func (r *UserRepositoryImplement) GetUserByID(userID int) (*model.User, error) {
-	row := r.db.QueryRow(queries.UserQueries.GetUserByID, userID)
+func (r *UserRepositoryImplement) GetUserByID(ctx context.Context, userID int) (*model.User, error) {
+	row := r.db.QueryRowContext(ctx, queries.UserQueries.GetUserByID, userID)
 	user := &model.User{}
 	err := row.Scan(&user.ID, &user.Name)
 	if err != nil {
