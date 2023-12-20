@@ -1,4 +1,4 @@
-package main
+package database_go_demo
 
 import (
 	"fmt"
@@ -20,6 +20,8 @@ type DBConnector struct {
 	UserService *service.UserService
 	// Puedes agregar más servicios aquí según sea necesario
 }
+
+var Connector DBConnector
 
 // NewDBConnector crea una nueva instancia de la biblioteca.
 func NewDBConnector(config Config) (*DBConnector, error) {
@@ -53,4 +55,8 @@ func (connector *DBConnector) CloseDBConnector() error {
 	// Realiza otras tareas de limpieza si es necesario
 
 	return nil
+}
+
+func RegisterDBConnector(dbConnector *DBConnector) {
+	Connector = *dbConnector
 }
